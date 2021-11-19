@@ -38,6 +38,8 @@ $(document).ready(function() {
 
 
     function createRows() {
+
+        // row status present past and future should be passed in
         for (i = 0; i < hours.length; i++) {
             $('.container').append($('<div class="row present" id="' + hours[i] + '"><div class="hour col-1">' + hours[i] +
                 '</div><textarea class="col-10"></textarea><div class = "saveBtn col-1"><i class = "far fa-save display-4"></i></div></div>'));
