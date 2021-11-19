@@ -20,8 +20,19 @@ $(document).ready(function() {
     var currentDayID = $("#currentDay");
 
     currentDayID.text(rightNowText.split('"')[1]);
+    // add array
+
+    hours = ['9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm']
+
+    var getAllHours = function getAllHours() {
+        for (var i = 0; i < hours.length; i++) {
+            console.log(hours[i]);
+        }
+
+    }
 
 
+    getAllHours();
 
     //then display a hourly schedule with hour and task and save button as list
 
