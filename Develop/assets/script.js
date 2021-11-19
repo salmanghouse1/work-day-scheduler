@@ -34,6 +34,18 @@ $(document).ready(function() {
 
     getAllHours();
 
+
+
+
+    function createRows() {
+        for (i = 0; i < hours.length; i++) {
+            $('.container').append($('<div class="row present" id="' + hours[i] + '"></div>'))
+        }
+    }
+
+
+    createRows();
+
     //then display a hourly schedule with hour and task and save button as list
 
 
