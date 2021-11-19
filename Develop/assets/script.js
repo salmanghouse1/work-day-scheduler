@@ -39,7 +39,10 @@ $(document).ready(function() {
 
     function createRows() {
         for (i = 0; i < hours.length; i++) {
-            $('.container').append($('<div class="row present" id="' + hours[i] + '"></div>'))
+            $('.container').append($('<div class="row present" id="' + hours[i] + '"><div class="hour col-1">' + hours[i] +
+                '</div><textarea class="col-10"></textarea><div class = "saveBtn col-1"><i class = "far fa-save display-4"></i></div></div>'));
+
+
         }
     }
 
