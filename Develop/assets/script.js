@@ -24,33 +24,43 @@ $(document).ready(function() {
 
     hours = ['9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm']
 
-    var getAllHours = function getAllHours() {
-        for (var i = 0; i < hours.length; i++) {
-            console.log(hours[i]);
-        }
-
-    }
-
-
-    getAllHours();
+    hours24hour = ['9', '10', '11', '12', '13', '14', '15', '16', '17']
 
 
 
+    var createRowsWithTimes = function createRows() {
+        // replace rightNowHours with ParseInt(rightNow.getHours)
+        var rightNowHours = parseInt(13);
 
-    function createRows() {
+
+
 
         // row status present past and future should be passed in
         for (i = 0; i < hours.length; i++) {
-            $('.container').append($('<div class="row present" id="' + hours[i] + '"><div class="hour col-1">' + hours[i] +
-                '</div><textarea class="col-10"></textarea><div class = "saveBtn col-1"><i class = "far fa-save display-4"></i></div></div>'));
+
+            var convertedArrayOfHours = parseInt(hours24hour[i]);
+            //past rows should be compared with right now and current row hour if the row hour is less than current hour it should be class past
+            if (hours24hour[i] < rightNowHours) {
+                $('.container').append($('<div class="row past" id="' + hours[i] + '"><div class="hour col-1">' + hours[i] +
+                    '</div><textarea class="col-10"></textarea><div class = "saveBtn col-1"><i class = "far fa-save display-4"></i></div></div>'));
+
+            } else if (convertedArrayOfHours === rightNowHours) {
+                $('.container').append($('<div class="row present" id="' + hours[i] + '"><div class="hour col-1">' + hours[i] +
+                    '</div><textarea class="col-10"></textarea><div class = "saveBtn col-1"><i class = "far fa-save display-4"></i></div></div>'));
+
+            } else if (hours24hour[i] > rightNowHours) {
+                $('.container').append($('<div class="row future" id="' + hours[i] + '"><div class="hour col-1">' + hours[i] +
+                    '</div><textarea class="col-10"></textarea><div class = "saveBtn col-1"><i class = "far fa-save display-4"></i></div></div>'));
+
+            }
+            //present rows should be compared with right now and current row hour if the row hour is equal to the current hour it should be class present
+            //future rows should be compared with right now and current row hour if the row hour is greater than the current hour it should be class future
 
 
         }
     }
 
-
-    createRows();
-
+    createRowsWithTimes();
     //then display a hourly schedule with hour and task and save button as list
 
 
