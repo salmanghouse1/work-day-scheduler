@@ -48,35 +48,39 @@ $(document).ready(function() {
                 // if (a == hours[i]) {
                 //     alert(localStorage.getItem('clickedHourItem') + "-" + hours[i]);
                 // }
+                $("*[data-store]").each(function() {
+                    $(this).val(localStorage.getItem("item-" + $(this).attr("data-store")));
+                });
+
 
                 if (hours24hour[i] < rightNowHours) {
 
 
                     $('.container').append($('<div class="row past time-block" id="' + hours[i] + '"><div class="hour col-1">' + hours[i] +
-                        '</div><textarea class="col-10"></textarea><div data-hour="' + hours[i] + '" class = "saveBtn col-1"><i class = "far fa-save display-4"></i></div></div>'));
+                        '</div><textarea data-store=' + i + ' class="col-10"></textarea><div data-hour="' + hours[i] + '" class = "saveBtn col-1"><i class = "far fa-save display-4"></i></div></div>'));
 
                 }
                 if (convertedArrayOfHours === rightNowHours) {
                     $('.container').append($('<div class="row present time-block" id="' + hours[i] + '"><div class="hour col-1">' + hours[i] +
-                        '</div><textarea class="col-10"></textarea><div data-hour="' + hours[i] + '" class = "saveBtn col-1"><i class = "far fa-save display-4"></i></div></div>'));
+                        '</div><textarea data-store=' + i + ' class="col-10"></textarea><div data-hour="' + hours[i] + '" class = "saveBtn col-1"><i class = "far fa-save display-4"></i></div></div>'));
 
                 }
                 if (hours24hour[i] > rightNowHours) {
                     $('.container').append($('<div class="row future time-block" id="' + hours[i] + '"><div class="hour col-1">' + hours[i] +
-                        '</div><textarea class="col-10"></textarea><div data-hour="' + hours[i] + '" class = "saveBtn col-1"><i class="far fa-save display-4"></i></div></div>'));
+                        '</div><textarea data-store=' + i + ' class="col-10"></textarea><div data-hour="' + hours[i] + '" class = "saveBtn col-1"><i class="far fa-save display-4"></i></div></div>'));
 
                 }
                 // counterHolder = localStorage.getItem('counter');
                 // for (i = 0; i <= hours24hour.length; i++) {
-                storedCounter = localStorage.getItem('counter');
+                // storedCounter = localStorage.getItem('counter');
 
 
-                storedVar = localStorage.getItem('clickedHourItems');
-                // for (i = 0;)
+                // storedVar = localStorage.getItem('clickedHourItems');
+                // // for (i = 0;)
 
-                taskValueGet = localStorage.getItem('taskValue');
-                $('#' + storedVar).children('textarea').val(taskValueGet);
-                // for (i = 0; i <= hours.length; i++) {
+                // taskValueGet = localStorage.getItem('taskValue');
+                // $('#' + storedVar).children('textarea').val(taskValueGet);
+                // // for (i = 0; i <= hours.length; i++) {
                 //     if (storedVar) {
 
                 //     }
@@ -95,23 +99,24 @@ $(document).ready(function() {
         createRowsWithTimes();
 
         $('.row').on("click", ".saveBtn", function(event) {
-            clickedHour = $(this).parent().attr("id");
+            // clickedHour = $(this).parent().attr("id");
+            localStorage.setItem("item-" + $(this).parent().children("textarea").attr("data-store"), $(this).parent().children("textarea").val());
 
-            var taskValue = $(this).parent('.row').children('textarea').val();
-            console.log(taskValue)
-                // var taskValue = $(this).parentElement.children[1].val();
+            // var taskValue = $(this).parent('.row').children('textarea').val();
+            // console.log(taskValue)
+            // var taskValue = $(this).parentElement.children[1].val();
 
-            arrayClickHours.push(clickedHour);
+            // arrayClickHours.push(clickedHour);
 
 
-            localStorage.setItem('clickedHourItems', clickedHour);
-            localStorage.setItem('taskValue', taskValue);
-            storedVar = localStorage.getItem('clickedHourItems');
-            taskValueGet = localStorage.getItem('taskValue');
-            hastagId = "#";
+            // localStorage.setItem('clickedHourItems', clickedHour);
+            // localStorage.setItem('taskValue', taskValue);
+            // storedVar = localStorage.getItem('clickedHourItems');
+            // taskValueGet = localStorage.getItem('taskValue');
+            // hastagId = "#";
 
-            concatedStoredVar = hastagId.concat(storedVar);
-            $(concatedStoredVar).children('textarea').val(taskValueGet);
+            // concatedStoredVar = hastagId.concat(storedVar);
+            // $(concatedStoredVar).children('textarea').val(taskValueGet);
 
             // }
 
