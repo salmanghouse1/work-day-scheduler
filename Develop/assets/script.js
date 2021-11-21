@@ -34,57 +34,64 @@ $(document).ready(function() {
         var arrayClickHours = [];
 
         var createRowsWithTimes = function createRows() {
-                // replace rightNowHours with ParseInt(rightNow.getHours)
-                var rightNowHours = parseInt(rightNow.getHours());
+            // replace rightNowHours with ParseInt(rightNow.getHours)
+            var rightNowHours = parseInt(rightNow.getHours());
 
 
 
-                // row status present past and future should be passed in
-                for (i = 0; i < hours.length; i++) {
+            // row status present past and future should be passed in
+            for (i = 0; i < hours.length; i++) {
 
-                    var convertedArrayOfHours = parseInt(hours24hour[i]);
-                    //past rows should be compared with right now and current row hour if the row hour is less than current hour it should be class past
-                    //if clicked hour item === hours array append textarea value
-                    // if (a == hours[i]) {
-                    //     alert(localStorage.getItem('clickedHourItem') + "-" + hours[i]);
-                    // }
+                var convertedArrayOfHours = parseInt(hours24hour[i]);
+                //past rows should be compared with right now and current row hour if the row hour is less than current hour it should be class past
+                //if clicked hour item === hours array append textarea value
+                // if (a == hours[i]) {
+                //     alert(localStorage.getItem('clickedHourItem') + "-" + hours[i]);
+                // }
 
-                    if (hours24hour[i] < rightNowHours) {
-
-
-                        $('.container').append($('<div class="row past time-block" id="' + hours[i] + '"><div class="hour col-1">' + hours[i] +
-                            '</div><textarea class="col-10"></textarea><div data-hour="' + hours[i] + '" class = "saveBtn col-1"><i class = "far fa-save display-4"></i></div></div>'));
-
-                    }
-                    if (convertedArrayOfHours === rightNowHours) {
-                        $('.container').append($('<div class="row present time-block" id="' + hours[i] + '"><div class="hour col-1">' + hours[i] +
-                            '</div><textarea class="col-10"></textarea><div data-hour="' + hours[i] + '" class = "saveBtn col-1"><i class = "far fa-save display-4"></i></div></div>'));
-
-                    }
-                    if (hours24hour[i] > rightNowHours) {
-                        $('.container').append($('<div class="row future time-block" id="' + hours[i] + '"><div class="hour col-1">' + hours[i] +
-                            '</div><textarea class="col-10"></textarea><div data-hour="' + hours[i] + '" class = "saveBtn col-1"><i class="far fa-save display-4"></i></div></div>'));
-
-                        // }
-                        // counterHolder = localStorage.getItem('counter');
-                        // for (i = 0; i <= hours24hour.length; i++) {
-                        storedCounter = localStorage.getItem('counter');
+                if (hours24hour[i] < rightNowHours) {
 
 
-                        storedVar = localStorage.getItem('clickedHourItems');
-                        // for (i = 0;)
-                        taskValueGet = localStorage.getItem('taskValue');
-                        $('#' + storedVar).children('textarea').val(taskValueGet);
-                        // } //present rows should be compared with right now and current row hour if the row hour is equal to the current hour it should be class present
-                        //future rows should be compared with right now and current row hour if the row hour is greater than the current hour it should be class future
+                    $('.container').append($('<div class="row past time-block" id="' + hours[i] + '"><div class="hour col-1">' + hours[i] +
+                        '</div><textarea class="col-10"></textarea><div data-hour="' + hours[i] + '" class = "saveBtn col-1"><i class = "far fa-save display-4"></i></div></div>'));
 
-                    }
                 }
+                if (convertedArrayOfHours === rightNowHours) {
+                    $('.container').append($('<div class="row present time-block" id="' + hours[i] + '"><div class="hour col-1">' + hours[i] +
+                        '</div><textarea class="col-10"></textarea><div data-hour="' + hours[i] + '" class = "saveBtn col-1"><i class = "far fa-save display-4"></i></div></div>'));
+
+                }
+                if (hours24hour[i] > rightNowHours) {
+                    $('.container').append($('<div class="row future time-block" id="' + hours[i] + '"><div class="hour col-1">' + hours[i] +
+                        '</div><textarea class="col-10"></textarea><div data-hour="' + hours[i] + '" class = "saveBtn col-1"><i class="far fa-save display-4"></i></div></div>'));
+
+                }
+                // counterHolder = localStorage.getItem('counter');
+                // for (i = 0; i <= hours24hour.length; i++) {
+                storedCounter = localStorage.getItem('counter');
+
+
+                storedVar = localStorage.getItem('clickedHourItems');
+                // for (i = 0;)
+
+                taskValueGet = localStorage.getItem('taskValue');
+                $('#' + storedVar).children('textarea').val(taskValueGet);
+                // for (i = 0; i <= hours.length; i++) {
+                //     if (storedVar) {
+
+                //     }
+
+                // }
+                // } //present rows should be compared with right now and current row hour if the row hour is equal to the current hour it should be class present
+                //future rows should be compared with right now and current row hour if the row hour is greater than the current hour it should be class future
+
             }
-            // $('.row').on('blur', "textarea", function(event) {
-            //     taskName = $(this).val();
-            //     alert(taskName);
-            // })
+        }
+
+        // $('.row').on('blur', "textarea", function(event) {
+        //     taskName = $(this).val();
+        //     alert(taskName);
+        // })
         createRowsWithTimes();
 
         $('.row').on("click", ".saveBtn", function(event) {
@@ -97,7 +104,7 @@ $(document).ready(function() {
             arrayClickHours.push(clickedHour);
 
 
-            localStorage.setItem('clickedHourItems', arrayClickHours);
+            localStorage.setItem('clickedHourItems', clickedHour);
             localStorage.setItem('taskValue', taskValue);
             storedVar = localStorage.getItem('clickedHourItems');
             taskValueGet = localStorage.getItem('taskValue');
