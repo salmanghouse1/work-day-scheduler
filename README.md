@@ -3,12 +3,16 @@ a simple calendar application that allows the user to save events for each hour 
 
 ![Application Image](./Assets/05-third-party-apis-homework-demo.gif)
 
+## Deployed at [Click here](https://salmanghouse1.github.io/work-day-scheduler/Develop)
+
+## Github URL [Click here](https://github.com/salmanghouse1/work-day-scheduler)
+
 ## Made with:
 
-*HTML
-*CSS
-*JS
-*JQuery
+* HTML
+* CSS
+* JS
+* JQuery
 
 #By salman ghouse
 
